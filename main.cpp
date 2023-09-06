@@ -1,21 +1,19 @@
-#include <SFML/Graphics.hpp>
+#include "libs.hpp"
+
+// to be compiled afterwards
+int mainTitle(), mainGame(int);
 
 int main(){
-	double windowHeight = 400, windowWidth = 400;
-	sf::RenderWindow window(sf::VideoMode(windowWidth,windowHeight), "smth");
-	while(window.isOpen()){
-		sf::Event event;
-		while(window.pollEvent(event)){
-			if(event.type == sf::Event::Closed){
-				window.close();
-			}
-		}
+	int x = mainTitle();
 
-		window.clear();
+	if(x == 2) {
+		return 0;
+	}
 
-		window.display();
+	if(mainGame(x)) {
+		std::cout << "Error in main game!" << std::endl;
+		return -1;
 	}
 
 	return 0;
 }
-
